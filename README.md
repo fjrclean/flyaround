@@ -17,3 +17,4 @@ Uses old fixed GL pipeline for rendering, camera working but stuffy, class that 
 	Lua 5.3.2 dev files
 	GLEW -- 'libglew-dev' package should work.
 	'pkg-config' package.
+	https://github.com/syoyo/tinyobjloader -- all of it's code is included in the header, meant to be placed in project directory. However I used the Makefile it comes with to install it's header to /usr/local/include and a useless lib in /usr/local/lib/ -- using the 'make && make install' after cloning it should work.

@@ -29,7 +29,8 @@ class camera{
 	struct vector3d getWorldPos(void);
 	void setMousePos(double xMouse, double yMouse);
 	private:
-	
+
+	void updateLookDir(void);
 		///update m_leftDir based on m_yRotate
 	void updateLeftDir(void);
 	void updateRightDir(void);

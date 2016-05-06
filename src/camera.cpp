@@ -45,6 +45,12 @@ void camera::lookStep(double xMouse, double yMouse){
 	
 	std::cout << "rotateX: " << m_xRotate << std::endl;
 	
+	updateLookDir();
+	updateLeftDir();
+	updateRightDir();
+}
+
+void camera::updateLookDir(void){
 	double cx = 0;
 	double cz = 0;
 	double cy = 0;
@@ -59,9 +65,7 @@ void camera::lookStep(double xMouse, double yMouse){
 	//forwardVec.z += cz + (r * sin(rotateX * M_PI / 180.0));
 	
 	m_lookDir = vMath.getUnit(&forwardVec);
-	
-	updateLeftDir();
-	updateRightDir();
+
 }
 
 void camera::updateLeftDir(void){

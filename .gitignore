@@ -3,3 +3,8 @@
 
 #ignore bin subdirectory and all files in it
 bin/*
+
+#ignore cmake stuff
+cmake_install.cmake
+CMakeFiles/*
+CMakeCache.txt

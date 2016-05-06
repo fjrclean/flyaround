@@ -21,7 +21,7 @@ camera::camera(){
 	m_xRotate = 0;
 	m_yRotate = 0;
 	
-	m_speed = 5;
+	m_speed = 0.1;
 
 	m_isMovingRight = false;
 	m_isMovingLeft = false;

@@ -11,7 +11,8 @@ Uses old fixed GL pipeline for rendering, camera working but stuffy, class that 
 4. Basic netcode
 
 ## Dependencies
-GLFW3 -- with GLU
-cmake 3.5
-Lua 5.3.2
-GLEW
+	GLFW3 -- with GLU
+	cmake >= 3.5
+	Lua 5.3.2
+	GLEW
+	pkg-config

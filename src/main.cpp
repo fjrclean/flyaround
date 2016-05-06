@@ -9,6 +9,7 @@
 #include "vector_math.hpp"
 #include "camera.hpp"
 #include "obj_model.hpp"
+#include "glshader.hpp"
 //#include "logic.h"
 //#include "physics.h"
 //#include "drawing.h"
@@ -19,6 +20,7 @@ void drawTri(struct vector3d vertA, struct vector3d vertB, struct vector3d vertC
 void lookAround(GLFWwindow *window);
 
 camera playerCam;
+glShader shaders("shaders/");
 
 int main(int argc, char *argv[]){
 	
@@ -48,6 +50,9 @@ int main(int argc, char *argv[]){
 	double xMouse, yMouse;
 	glfwGetCursorPos (window, &xMouse, &yMouse);
 	playerCam.setMousePos(xMouse,yMouse);
+	
+	//glShader test
+	shaders.addShader("testfrag","testvert");
 
 	float ratio;
 	int width, height;

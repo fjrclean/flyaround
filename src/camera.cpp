@@ -43,7 +43,7 @@ void camera::lookStep(double xMouse, double yMouse){
 		
 	m_yMouse = yMouse;
 	
-	std::cout << "rotateX: " << m_xRotate << std::endl;
+	//std::cout << "rotateX: " << m_xRotate << std::endl;
 	
 	updateLookDir();
 	updateLeftDir();

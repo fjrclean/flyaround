@@ -13,6 +13,6 @@ Uses old fixed GL pipeline for rendering, camera working but stuffy, class that 
 ## Dependencies
 	GLFW3 -- with GLU
 	cmake >= 3.5
-	Lua 5.3.2
-	GLEW
-	pkg-config
+	Lua 5.3.2 dev files
+	GLEW -- 'libglew-dev' package should work.
+	'pkg-config' package.

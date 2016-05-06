@@ -7,6 +7,7 @@ add_executable(flyaround
 	camera.cpp
 	obj_model.cpp
 	#lua_object.cpp
+	#glshader.cpp
 )
 
 find_package(GLEW)

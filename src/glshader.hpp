@@ -29,16 +29,17 @@ class glShader{
 	addShader(char *fragSrcFile, char *vertSrcFile);
 	private:
 		///Loads the ASCII text of fileName and returns it as a char *
-	char * loadSource(fileName);
+	char * loadSource(char *fileName);
 		/**
 		*@brief compiles a fragment shader, after checking it has not
 		*already been compiled with m_fragSrc.
-		*Returns object identifier of shader
+		*@return object identifier of shader,
+		*-1 if error
 		*/
 	GLUint compileFrag(char *source);
 		
-	GLUint compileVert(
-	attach(
+	GLUint compileVert(char *source);
+	
 	
 		///map compiled frag shader source file name to it's
 		///GLUint object identifier.
@@ -51,6 +52,8 @@ class glShader{
 	
 		///Vector of all shader programs
 	std::vector<GLUint> m_shaderPrograms;
+		///prefix prepended to all shader source file names
+	char *m_pathPrefix;
 };
 
 /*********************************************************/

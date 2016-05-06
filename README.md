@@ -9,6 +9,7 @@ Uses old fixed GL pipeline for rendering, camera working but stuffy, class that 
 2. Create class to add & remove vertices from .objs to be drawn by shaders.
 3. Lua integration -- logical game objects will be in lua.
 4. Basic netcode
+5. Release Matthew from HJ slavery.
 
 ## Dependencies
 	GLFW3 -- with GLU

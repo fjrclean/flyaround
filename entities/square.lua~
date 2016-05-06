@@ -1,0 +1,3 @@
+square = {}
+square.obj = "square.obj"
+

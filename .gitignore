@@ -4,7 +4,8 @@
 #ignore bin subdirectory and all files in it
 bin/*
 
-#ignore cmake stuff
+#ignore build files
 cmake_install.cmake
 CMakeFiles/*
 CMakeCache.txt
+Makefile

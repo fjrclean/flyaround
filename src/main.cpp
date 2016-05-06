@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 	glfwSwapInterval(1);
 	
 	glfwSetKeyCallback(window, key_callback);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	
 	double xMouse, yMouse;
 	glfwGetCursorPos (window, &xMouse, &yMouse);

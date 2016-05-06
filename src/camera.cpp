@@ -21,7 +21,7 @@ camera::camera(){
 	m_xRotate = 0;
 	m_yRotate = 0;
 	
-	m_speed = 5;
+	m_speed = 0.1;
 
 	m_isMovingRight = false;
 	m_isMovingLeft = false;
@@ -41,7 +41,6 @@ void camera::lookStep(double xMouse, double yMouse){
 	m_xMouse = xMouse;
 
 	double diffY = yMouse - m_yMouse; //Change in y cursor position
-	diffY *= -1;	//the mouse positions have inverted y coords
 	if(yMouse != m_yMouse)
 		m_xRotate += diffY;
 	
@@ -78,9 +77,7 @@ void camera::updateLookDir(void){
 	forwardVec.x = cx + (r * cos(m_yRotate * M_PI / 180.0));
 	forwardVec.z = cz + (r * sin(m_yRotate * M_PI / 180.0));
 	
-	forwardVec.y = cy + (r * tan(-m_xRotate * M_PI / 180.0));
-
-	std::cout << "AngleX: " << m_yRotate << std::endl;
+	forwardVec.y = cy + (r * tan(m_xRotate * M_PI / 180.0));
 	
 	m_lookDir = vMath.getUnit(&forwardVec);
 

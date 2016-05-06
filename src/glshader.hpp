@@ -14,6 +14,7 @@
 
 #include <vector>
 #include <map>
+#include <string>
 
 /*********************************************************/
 
@@ -24,36 +25,40 @@
 class glShader{
 
 	public:
+	glShader();
 		///takes the file shader source is stored in, relative to pwd
-	glShader(char *pathPrefix);
-	addShader(char *fragSrcFile, char *vertSrcFile);
+	glShader(std::string pathPrefix);
+	void addShader(char *fragSrcFile, char *vertSrcFile);
 	private:
 		///Loads the ASCII text of fileName and returns it as a char *
-	char * loadSource(char *fileName);
+	const char * loadSource(char *fileName);
 		/**
 		*@brief compiles a fragment shader, after checking it has not
-		*already been compiled with m_fragSrc.
+		*already been compiled with m_fragObj.
 		*@return object identifier of shader,
 		*-1 if error
 		*/
-	GLUint compileFrag(char *source);
+	GLuint compileFrag(char *fileName, char *source);
 		
-	GLUint compileVert(char *source);
+	GLuint compileVert(char *fileName, char *source);
+	
+		///Check if shader was compiled successfully
+	void checkCompileErrors(GLuint object);
 	
 	
 		///map compiled frag shader source file name to it's
 		///GLUint object identifier.
 		///Used to check if source has already been compiled
 		///I presume compiled objects remain after they have been linked with 
-	std::map<char *, GLUint> m_fragSrc;
+	std::map<char *, GLuint> m_fragObj;
 		///map compuled vertex shader source file name to it's
 		///GLUint object identifier.
-	std::map<char *, GLUint> m_vertSrc;
+	std::map<char *, GLuint> m_vertObj;
 	
 		///Vector of all shader programs
-	std::vector<GLUint> m_shaderPrograms;
+	std::vector<GLuint> m_shaderPrograms;
 		///prefix prepended to all shader source file names
-	char *m_pathPrefix;
+	std::string m_pathPrefix;
 };
 
 /*********************************************************/

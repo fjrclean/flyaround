@@ -20,7 +20,8 @@ class camera{
 
 	public:
 	camera();
-	void input(int action);
+	void inputPress(int action);
+	void inputRelease(int action);
 		/**
 		*@brief returns the eye coordinates of where the camera should be looking
 		*/
@@ -34,6 +35,7 @@ class camera{
 		///update m_leftDir based on m_yRotate
 	void updateLeftDir(void);
 	void updateRightDir(void);
+	void updatePosition();
 	
 		///positions of the camera within the world
 		///used to determine how to move the world around the render viewport.
@@ -56,6 +58,14 @@ class camera{
 	
 	vecMath vMath;
 	
+	//current movement states
+	bool m_isMovingRight;
+	bool m_isMovingLeft;
+	bool m_isMovingForward;
+	bool m_isMovingBackward;
+	bool m_isMovingPosY;
+	bool m_isMovingNegY;
+
 	int cameraForward = GLFW_KEY_W;
 	int cameraBackward = GLFW_KEY_S;
 	int cameraLeft = GLFW_KEY_A;

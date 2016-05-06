@@ -121,8 +121,11 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS){
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-	else if(action == GLFW_PRESS || action == GLFW_REPEAT){
-		playerCam.input(key);
+	else if(action == GLFW_PRESS){
+		playerCam.inputPress(key);
+	}
+	else if(action == GLFW_RELEASE){
+		playerCam.inputRelease(key);
 	}
 }
 

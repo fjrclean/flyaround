@@ -1,3 +1,5 @@
 /home/finn/Documents/game_engine/flyaround/CMakeFiles/edit_cache.dir
 /home/finn/Documents/game_engine/flyaround/CMakeFiles/rebuild_cache.dir
-/home/finn/Documents/game_engine/flyaround/CMakeFiles/flyaround.dir
+/home/finn/Documents/game_engine/flyaround/bin/CMakeFiles/edit_cache.dir
+/home/finn/Documents/game_engine/flyaround/bin/CMakeFiles/rebuild_cache.dir
+/home/finn/Documents/game_engine/flyaround/bin/CMakeFiles/flyaround.dir

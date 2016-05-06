@@ -120,116 +120,8 @@ flyaround: cmake_check_build_system
 
 # fast build rule for target.
 flyaround/fast:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/build
+	$(MAKE) -f bin/CMakeFiles/flyaround.dir/build.make bin/CMakeFiles/flyaround.dir/build
 .PHONY : flyaround/fast
-
-src/camera.o: src/camera.cpp.o
-
-.PHONY : src/camera.o
-
-# target to build an object file
-src/camera.cpp.o:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/camera.cpp.o
-.PHONY : src/camera.cpp.o
-
-src/camera.i: src/camera.cpp.i
-
-.PHONY : src/camera.i
-
-# target to preprocess a source file
-src/camera.cpp.i:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/camera.cpp.i
-.PHONY : src/camera.cpp.i
-
-src/camera.s: src/camera.cpp.s
-
-.PHONY : src/camera.s
-
-# target to generate assembly for a file
-src/camera.cpp.s:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/camera.cpp.s
-.PHONY : src/camera.cpp.s
-
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
-
-src/obj_model.o: src/obj_model.cpp.o
-
-.PHONY : src/obj_model.o
-
-# target to build an object file
-src/obj_model.cpp.o:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/obj_model.cpp.o
-.PHONY : src/obj_model.cpp.o
-
-src/obj_model.i: src/obj_model.cpp.i
-
-.PHONY : src/obj_model.i
-
-# target to preprocess a source file
-src/obj_model.cpp.i:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/obj_model.cpp.i
-.PHONY : src/obj_model.cpp.i
-
-src/obj_model.s: src/obj_model.cpp.s
-
-.PHONY : src/obj_model.s
-
-# target to generate assembly for a file
-src/obj_model.cpp.s:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/obj_model.cpp.s
-.PHONY : src/obj_model.cpp.s
-
-src/vector_math.o: src/vector_math.cpp.o
-
-.PHONY : src/vector_math.o
-
-# target to build an object file
-src/vector_math.cpp.o:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/vector_math.cpp.o
-.PHONY : src/vector_math.cpp.o
-
-src/vector_math.i: src/vector_math.cpp.i
-
-.PHONY : src/vector_math.i
-
-# target to preprocess a source file
-src/vector_math.cpp.i:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/vector_math.cpp.i
-.PHONY : src/vector_math.cpp.i
-
-src/vector_math.s: src/vector_math.cpp.s
-
-.PHONY : src/vector_math.s
-
-# target to generate assembly for a file
-src/vector_math.cpp.s:
-	$(MAKE) -f CMakeFiles/flyaround.dir/build.make CMakeFiles/flyaround.dir/src/vector_math.cpp.s
-.PHONY : src/vector_math.cpp.s
 
 # Help Target
 help:
@@ -240,18 +132,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... flyaround"
-	@echo "... src/camera.o"
-	@echo "... src/camera.i"
-	@echo "... src/camera.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/obj_model.o"
-	@echo "... src/obj_model.i"
-	@echo "... src/obj_model.s"
-	@echo "... src/vector_math.o"
-	@echo "... src/vector_math.i"
-	@echo "... src/vector_math.s"
 .PHONY : help
 
 

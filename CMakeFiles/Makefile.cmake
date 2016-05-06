@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.5.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.5.2/CMakeSystem.cmake"
   "CMakeLists.txt"
+  "src/CMakeLists.txt"
   "/usr/local/share/cmake-3.5/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.5/Modules/CMakeCXXInformation.cmake"
   "/usr/local/share/cmake-3.5/Modules/CMakeCommonLanguageInclude.cmake"
@@ -44,9 +45,10 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bin/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/flyaround.dir/DependInfo.cmake"
+  "bin/CMakeFiles/flyaround.dir/DependInfo.cmake"
   )

@@ -41,17 +41,27 @@ void camera::lookStep(double xMouse, double yMouse){
 	m_xMouse = xMouse;
 
 	double diffY = yMouse - m_yMouse; //Change in y cursor position
+	diffY *= -1;	//the mouse positions have inverted y coords
 	if(yMouse != m_yMouse)
 		m_xRotate += diffY;
-	if(m_xRotate > 135)
-		m_xRotate = 135;
-	else if(m_xRotate < -135)
-		m_xRotate = -135;
+	
 		
 	m_yMouse = yMouse;
 	
-	std::cout << "rotateX: " << m_xRotate << std::endl;
-	
+	if(m_yRotate >= 360){
+		m_yRotate = m_yRotate - 360;
+	}
+	else if(m_yRotate < 0){
+		m_yRotate = 360 + m_yRotate;
+	}
+
+	if(m_xRotate > 80){
+		m_xRotate = 80;
+	}
+	else if(m_xRotate < -80){
+		m_xRotate = -80;
+	}
+
 	updateLookDir();
 	updateLeftDir();
 	updateRightDir();
@@ -68,8 +78,9 @@ void camera::updateLookDir(void){
 	forwardVec.x = cx + (r * cos(m_yRotate * M_PI / 180.0));
 	forwardVec.z = cz + (r * sin(m_yRotate * M_PI / 180.0));
 	
-	forwardVec.y = cy + (r * cos(m_xRotate * M_PI / 180.0));
-	//forwardVec.z += cz + (r * sin(rotateX * M_PI / 180.0));
+	forwardVec.y = cy + (r * tan(-m_xRotate * M_PI / 180.0));
+
+	std::cout << "AngleX: " << m_yRotate << std::endl;
 	
 	m_lookDir = vMath.getUnit(&forwardVec);
 

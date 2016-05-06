@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
 	        glLoadIdentity();
 	        //glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 		//glFrustum (-ratio, ratio, 0, height, 1.5f, 20.0);
-	        gluPerspective(45.0f, ratio, 0.1,1000);
+	        gluPerspective(45.0f, ratio, 0.1, 5000);
 	        
 		double xMouse, yMouse;
 		glfwGetCursorPos (window, &xMouse, &yMouse);	

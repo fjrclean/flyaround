@@ -52,8 +52,10 @@ int main(int argc, char *argv[]){
 	playerCam.setMousePos(xMouse,yMouse);
 	
 	//glShader test
+	glewInit();
 	shaders.addShader("testfrag","testvert");
 
+	
 	float ratio;
 	int width, height;
 	while(!glfwWindowShouldClose(window)){

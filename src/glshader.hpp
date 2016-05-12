@@ -24,12 +24,17 @@
 		*
 		*/
 class glShader{
+	private:
+	GLuint m_programID;
 
 	public:
 	glShader();
 		///takes the file shader source is stored in, relative to pwd
 	glShader(std::string pathPrefix);
 	void addShader(char *fragSrcFile, char *vertSrcFile);
+	void enable();
+	void disable();
+
 	private:
 		///Loads the ASCII text of fileName and returns it as a char *
 	const char * loadSource(char *fileName);
@@ -39,11 +44,13 @@ class glShader{
 		*@return object identifier of shader,
 		*-1 if error
 		*/
-	GLuint compileShader(char *fileName, const char *source, GLuint type);
+	GLuint compileShader(std::string source, GLenum type);
 		///Check if shader was compiled successfully
 	void compileErrors(GLuint object);
 		///should be moved to general useful functions file
 	unsigned long int fileLength(std::ifstream &file);
+
+	std::string readTextFile(std::string filePath);
 	
 		///map compiled frag shader source file name to it's
 		///GLUint object identifier.
@@ -58,6 +65,8 @@ class glShader{
 	std::vector<GLuint> m_shaderPrograms;
 		///prefix prepended to all shader source file names
 	std::string m_pathPrefix;
+
+	GLuint createProgram(const GLuint* shaderList, int shaderNum);
 };
 
 /*********************************************************/

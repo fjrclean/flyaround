@@ -1,5 +1,10 @@
-void main()
-{
-	// Transforming The Vertex
-	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+#version 130
+
+in vec3 a_position;
+
+out vec4 vertexColour;
+
+void main(){
+	vertexColour = vec4(0, 0, 1, 1);
+	gl_Position = vec4(a_position.x, a_position.y, a_position.z, 1);
 }

@@ -22,7 +22,7 @@ objModel::objModel(std::string objFile){
 		//delete self? 
 	}
 	
-	test(m_shapes,m_materials);
+	//test(m_shapes,m_materials);
 	
 	//check image files used by materials
 	//add them to m_textures if not already present

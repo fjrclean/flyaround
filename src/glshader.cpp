@@ -33,8 +33,8 @@ void glShader::addShader(char *fragSrcFile, char *vertSrcFile){
 	if(vertSrc == NULL || fragSrc == NULL)
 		std::cout << "Aborting..." << std::endl;
 	else{
-		addFrag(fragSrcFile,fragSrc);
-		addVert(vertSrcFile,vertSrc);
+		compileShader(fragSrcFile,fragSrc,GL_FRAGMENT_SHADER);
+		compileShader(vertSrcFile,vertSrc,GL_VERTEX_SHADER);
 		//then link
 	}
 	
@@ -73,54 +73,26 @@ const char * glShader::loadSource(char *fileName){
 	return cSrc;
 }
 
-GLuint glShader::addFrag(char *fileNameC, const char *source){
+GLuint glShader::compileShader(char *fileName, const char *source, GLuint type){
 	int size;
-	GLuint fragHndl;
-	std::string fileName = fileNameC;
-	if(m_fragObj.find(fileName) == m_fragObj.end()){// no object for source exists
-		//compile & add
-		m_fragObj[fileName] = glCreateShader(GL_FRAGMENT_SHADER);
-		fragHndl = m_fragObj[fileName];
-		size = strlen(source);
-		glShaderSource(fragHndl,1,&source,&size);
-		glCompileShader(fragHndl);
-		
-		GLint compiled;
-		glGetShaderiv(fragHndl, GL_COMPILE_STATUS, &compiled);
-		if (compiled)
-			std::cout << "frag shader compiled successfully: " << m_pathPrefix << fileName << std::endl;
-		else{
-			std::cout << "error: frag shader compiled failed: " << m_pathPrefix << fileName << std::endl;
-			return -1;
-		}
-	}
-	
-	return m_fragObj[fileName];
-}
+	GLuint shaderHndl;
 
-GLuint glShader::addVert(char *fileNameC, const char *source){
-	int size;
-	GLuint fragHndl;
-	std::string fileName = fileNameC;
-	if(m_vertObj.find(fileName) == m_vertObj.end()){// no object for source exists
-		//compile & add
-		m_vertObj[fileName] = glCreateShader(GL_FRAGMENT_SHADER);
-		fragHndl = m_vertObj[fileName];
-		size = strlen(source);
-		glShaderSource(fragHndl,1,&source,&size);
-		glCompileShader(fragHndl);
-		
-		GLint compiled;
-		glGetShaderiv(fragHndl, GL_COMPILE_STATUS, &compiled);
-		if (compiled)
-			std::cout << "vert shader compiled successfully: " << m_pathPrefix << fileName << std::endl;
-		else{
-			std::cout << "error: vert shader compiled failed: " << m_pathPrefix << fileName << std::endl;
-			return -1;
-		}
-	}
+	//compile & add
+	shaderHndl = glCreateShader(type);
+	size = strlen(source);
+	glShaderSource(shaderHndl,1,&source,&size);
+	glCompileShader(shaderHndl);
 	
-	return m_vertObj[fileName];
+	GLint compiled;
+	glGetShaderiv(shaderHndl, GL_COMPILE_STATUS, &compiled);
+	if (compiled)
+		std::cout << "frag shader compiled successfully: " << m_pathPrefix << fileName << std::endl;
+	else{
+		std::cout << "error: frag shader compiled failed: " << m_pathPrefix << fileName << std::endl;
+		return -1;
+	}
+
+	return shaderHndl;
 }
 
 unsigned long int glShader::fileLength(std::ifstream &file){

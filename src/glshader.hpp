@@ -39,10 +39,7 @@ class glShader{
 		*@return object identifier of shader,
 		*-1 if error
 		*/
-	GLuint addFrag(char *fileName, const char *source);
-		
-	GLuint addVert(char *fileName, const char *source);
-	
+	GLuint compileShader(char *fileName, const char *source, GLuint type);
 		///Check if shader was compiled successfully
 	void compileErrors(GLuint object);
 		///should be moved to general useful functions file

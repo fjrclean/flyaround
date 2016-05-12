@@ -4,6 +4,9 @@ My first game engine attempt. No use to anyone at this stage.
 ## State
 Uses old fixed GL pipeline for rendering, camera working nicely, class that can manually load in wavefront .obj to be drawn.
 
+## Contributing
+Guidelines can be found in CONVENTIONS.MD
+
 ## TODO
 1. Complete glshader.hpp & .cpp to create & manage shader programs.
  * valid glsl files (as far as I know) failing compile into shader object

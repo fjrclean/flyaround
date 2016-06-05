@@ -1,6 +1,9 @@
 #ignore nano backups that end in ~
 *~
 
+#ignore files with 'nogit' extension
+*.nogit
+
 #ignore bin subdirectory and all files in it
 bin/*
 

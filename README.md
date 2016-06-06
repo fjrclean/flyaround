@@ -35,3 +35,4 @@ Uses old fixed GL pipeline for rendering, camera working nicely, class that can 
 * 'pandoc' & 'doxygen' packages for documentation generation
  * Currently only docbook doxygen is output, with doxygen @todo commands embedded in source code extracted & converted to TODO.md
  * See CMakeLists.txt for more info -- need to clean it up.
+ * To skip, use specific make targets 'game', 'server' & 'client'

@@ -1,6 +1,6 @@
-Generated from doxygen using @todo commands in source
-Do not manually add to this file, it will be overwritten!
-This file will be generated with the default make target
+* Generated from doxygen using @todo commands in source
+* Do not manually add to this file, it will be overwritten!
+* This file will be generated with the default make target
 Todo List
 =========
 

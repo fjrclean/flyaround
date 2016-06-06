@@ -19,6 +19,7 @@ add_custom_target(doxy ALL
 	COMMAND echo "* Generated from doxygen using @todo commands in source" > TODO.md
 	COMMAND echo "* Do not manually add to this file, it will be overwritten!" >> TODO.md
 	COMMAND echo "* This file will be generated with the default make target" >> TODO.md
+	COMMAND echo "" >> TODO.md
 	COMMAND doxygen flyaround.doxy
 	COMMAND pandoc -f docbook -t markdown_github doxy/docbook/todo.xml >> TODO.md
 )

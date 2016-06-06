@@ -7,6 +7,9 @@
 #ignore bin subdirectory and all files in it
 bin/*
 
+#ignore doxygen documentation
+doxy/*
+
 #ignore build files
 cmake_install.cmake
 CMakeFiles/*

@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/server.dir/sv.o CMakeFiles/server.dir/vector_math.o CMakeFiles/server.dir/camera.o CMakeFiles/server.dir/obj_model.o CMakeFiles/server.dir/server.o  -o server -rdynamic 

@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/client.dir/cl.o CMakeFiles/client.dir/vector_math.o CMakeFiles/client.dir/camera.o CMakeFiles/client.dir/obj_model.o CMakeFiles/client.dir/glshader.o CMakeFiles/client.dir/client.o  -o client -rdynamic 

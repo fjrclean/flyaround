@@ -9,9 +9,11 @@ bin/*
 
 #ignore doxygen documentation
 doxy/*
+TODO.html
 
 #ignore build files
 cmake_install.cmake
 CMakeFiles/*
 CMakeCache.txt
 Makefile
+src/CMakeFiles/*

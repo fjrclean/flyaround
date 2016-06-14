@@ -5,11 +5,15 @@
 #define GLFW_INCLUDE_GLU
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <unistd.h> // POSIX only
 
 #include "vector_math.hpp"
 #include "camera.hpp"
 #include "obj_model.hpp"
 #include "glshader.hpp"
+#include "server.hpp"
+#include "client.hpp"
+
 //#include "logic.h"
 //#include "physics.h"
 //#include "drawing.h"
@@ -21,6 +25,8 @@ void lookAround(GLFWwindow *window);
 
 camera playerCam;
 glShader shaders("shaders/");
+server sv;
+client cl;
 
 int main(int argc, char *argv[]){
 	
@@ -55,6 +61,13 @@ int main(int argc, char *argv[]){
 	glewInit();
 	shaders.addShader("testfrag","testvert");
 
+	//network test
+	sv.setPort(7622);
+	sv.startServer();
+
+	cl.connectServer(7622);
+	sleep(10);
+	sv.checkForConnection();
 	
 	float ratio;
 	int width, height;
@@ -72,6 +85,11 @@ int main(int argc, char *argv[]){
 		//do physics
 	
 		//do drawing
+
+		// networking
+		//cl.sendServer();
+		//sv.receiveClient();
+		
 
 		glMatrixMode(GL_PROJECTION);
 	        glLoadIdentity();

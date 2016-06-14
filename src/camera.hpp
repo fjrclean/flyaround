@@ -29,6 +29,11 @@ class camera{
 	struct vector3d getLookDir(void);
 	struct vector3d getWorldPos(void);
 	void setMousePos(double xMouse, double yMouse);
+
+	void setRotation(double x, double y, double z);
+	void getRotation(double *x, double *y);
+
+
 	private:
 
 	void updateLookDir(void);
@@ -37,6 +42,9 @@ class camera{
 	void updateRightDir(void);
 	void updatePosition();
 	
+	
+	vector3d getPosition();
+
 		///positions of the camera within the world
 		///used to determine how to move the world around the render viewport.
 	struct vector3d m_worldPos;

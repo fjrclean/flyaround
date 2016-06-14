@@ -29,6 +29,11 @@ struct materialMem{
 		/**
 		*@brief
 		*
+		* @todo Change m_shapes & m_materials vectors to static, so obj
+		* instances that use the same obj files do not load duplicates.
+		* Each objModel object can contain the instances specific properties,
+		* eg offset from origin.
+		*
 		*/
 class objModel{
 
@@ -41,6 +46,16 @@ class objModel{
 		///takes a pointer to a function which draws a triangle
 		///will parse each triangle of this object to that function to be drawn
 	void drawObj(void (*drawTri)(struct vector3d, struct vector3d, struct vector3d));
+	
+	int offsetOrigin(double x, double y, double z);
+	
+		/**
+		* @brief Scale obj model on each axis.
+		* 1 is equal to no change.
+		*
+		*/
+	int setScale(float x, float y, float z);
+	
 	private:
 	void * addTexture(char * fileName);
 
@@ -48,6 +63,9 @@ class objModel{
 	std::vector<tinyobj::material_t> m_materials;
 	std::vector<struct materialMem> m_materialsMem;
 	std::vector<tinyobj::shape_t> m_shapes;
+	
+	vector3d m_offset;
+	vector3d m_scale;
 
 };
 

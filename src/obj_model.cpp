@@ -22,6 +22,10 @@ objModel::objModel(std::string objFile){
 		//delete self? 
 	}
 	
+	m_offset.x = 0;
+	m_offset.y = 0;
+	m_offset.z = 0;
+	
 	//test(m_shapes,m_materials);
 	
 	//check image files used by materials
@@ -46,12 +50,39 @@ void objModel::drawObj(void (*drawTri)(struct vector3d, struct vector3d, struct 
 				vert[i1].x = m_shapes[i].mesh.positions[3*iVert[i1]+0];
       				vert[i1].y = m_shapes[i].mesh.positions[3*iVert[i1]+1];
             			vert[i1].z = m_shapes[i].mesh.positions[3*iVert[i1]+2];
+
+            			// change scale
+            			vert[i1].x *= m_scale.x;
+            			vert[i1].y *= m_scale.y;
+            			vert[i1].z *= m_scale.z;
+
+            			// offset from origin
+            			vert[i1].x += m_offset.x;
+            			vert[i1].y += m_offset.y;
+            			vert[i1].z += m_offset.z;
+
             		}
 		drawTri(vert[0],vert[1],vert[2]);
 
                 }
 	}
        	
+}
+
+int objModel::offsetOrigin(double x, double y, double z){
+	m_offset.x += x;
+	m_offset.y += y;
+	m_offset.z += z;
+
+	return 0;
+}
+
+int objModel::setScale(float x, float y, float z){
+	m_scale.x = x;
+	m_scale.y = y;
+	m_scale.z = z;
+	
+	return 0;
 }
 
 

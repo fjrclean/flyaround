@@ -33,6 +33,7 @@ camera::camera(){
 
 }
 
+// called for camera instances on client side.
 void camera::lookStep(double xMouse, double yMouse){
 	double diffX = xMouse - m_xMouse; //Change in x cursor position
 	if(xMouse != m_xMouse)
@@ -65,6 +66,25 @@ void camera::lookStep(double xMouse, double yMouse){
 	updateLeftDir();
 	updateRightDir();
 }
+
+// called for client to send data to server
+void camera::getRotation(double *x, double *y){
+	*x = m_xRotate;
+	*y = m_yRotate;
+}
+
+
+// called for camera instances on server side.
+void camera::setRotation(double x, double y, double z){
+	m_yRotate = y;
+	m_xRotate = x;
+
+	updateLookDir();
+	updateLeftDir();
+	updateRightDir();
+
+}
+
 
 void camera::updateLookDir(void){
 	double cx = 0;
@@ -129,6 +149,10 @@ struct vector3d camera::getWorldPos(void){
 void camera::setMousePos(double xMouse, double yMouse){
 	m_xMouse = xMouse;
 	m_yMouse = yMouse;
+}
+
+vector3d camera::getPosition(){
+	return m_worldPos;
 }
 
 void camera::updatePosition(){

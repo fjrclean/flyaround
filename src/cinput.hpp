@@ -22,8 +22,9 @@
 /********************************************************/
 
 #include <map>
+#include <string>
 
-#include <game_data.hpp>
+#include "game_data.hpp"
 
 /*********************************************************/
 
@@ -39,10 +40,8 @@ class cinput{
 		*
 		* @param output sets where action & mouse data is stored once
 		* converted, eg from input to action.
-		* @param mouseX is the starting GLFW mouse x coordinate.
-		* @param mouseY is the starting GLFW mouse y coordinate.
 		*/
-	cinput(fromplayer_t output, double mouseX, double mouseY);
+	cinput(fromplayer_t *output);
 
 		/**
 		* @brief Adds a player action for this game.
@@ -75,7 +74,7 @@ class cinput{
 	int mapAction(uint16_t num, int GLFW_key);
 	
 		/**
-		* @brief Adds key's association action press to the output.
+		* @brief Adds key's associated action press to the output.
 		*
 		* @param GLFW_key is used to look for associated action.
 		*
@@ -93,7 +92,17 @@ class cinput{
 		* check log;
 		*/
 	int inputReleased(int GLFW_key);
-	
+
+		/**
+		* @brief Set mouse previous mouse position.
+		*
+		* @param mouseX is the previous GLFW mouse x coordinate.
+		* @param mouseY is the previous GLFW mouse y coordinate.
+		*
+		* @return 0 for success; -1 on failure, check log;
+		*/
+	int setMousePos(double mouseX, double mouseY);
+
 		/**
 		* @brief Uses current & previous mouse coordinates to determine
 		* rotation around imaginary mouse axes.
@@ -109,15 +118,19 @@ class cinput{
 	int updateMouseRotation(double mouseX, double mouseY);
 	
 	private:
+		/// previous mouse x coordinate
 	double m_mouseX;
+		/// previous mouse y coordinate
 	double m_mouseY;
+		/// current mouse rotation
+	vector3d m_mouseRotation;
 	fromplayer_t *m_output;
 	
 	std::map<uint16_t,int> m_inputmap;
 	std::map<uint16_t,std::string> m_actionnames;
 };
 
-/// @todo add insertion operator for ini-like file defining action-input mappings.
+/// @todo add insertion operator for key-value file defining action-input mappings.
 
 /*********************************************************/
 

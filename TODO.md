@@ -5,6 +5,28 @@
 Todo List
 =========
 
+Member [cinput::addAction](#classcinput_1a5d9268cc46ece13257617019b36d3ad8) (uint16\_t num, char \*name, int GLFW\_defkey)  
+Add check for existing mappings in config files
+
+Member [cinput::inputPressed](#classcinput_1ab0f749d8a3bcbb341a2923aba117a383) (int GLFW\_key)  
+Better way to find element than for loop? map::find can only find key, not element??
+
+Setting actionPress should be bitwise to allow multiple presses in single [fromplayer\_t](#structfromplayer__t)
+
+Member [cinput::inputReleased](#classcinput_1a0979acd575c69fc31f5ae5db2c249868) (int GLFW\_key)  
+Better way to find element than for loop? map::find can only find key, not element??
+
+Setting actionRelease should be bitwise to allow multiple releases in single [fromplayer\_t](#structfromplayer__t)
+
+Member [cinput::mapAction](#classcinput_1ade9614dde31e1d2efc42c6322c7d1c7b) (uint16\_t num, int GLFW\_key)  
+Allow multiple inputs to be mapped to single action.
+
+Class [entity](#classentity)  
+change to proper mathematics library for vectors. GNU Scientific library?
+
+Member [entity::rotate](#classentity_1ac89126ae768246b41e798745212259f4) (double x, double y, double z)  
+change to proper matrix rotation using glm. Using cos, sin, tan method from obsolete camera class for now, with no z axis rotation. Can this be added?
+
 Class [netinst](#classnetinst)  
 Replace std::cerr output with calls to a logging class.
 

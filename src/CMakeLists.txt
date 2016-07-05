@@ -8,6 +8,8 @@ add_executable(client
 	obj_model.cpp
 	glshader.cpp
 	netinst.cpp
+	cinput.cpp
+	entity.cpp
 )
 
 add_executable(server
@@ -16,7 +18,6 @@ add_executable(server
 	camera.cpp
 	obj_model.cpp
 	netinst.cpp
-#	luaHandle.cpp
 )
 
 find_package(GLEW)

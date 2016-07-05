@@ -1,4 +1,5 @@
 //	entity.hpp Represents a generic physical world object.
+//	Part of the flyaround game engine project.
 //	Copyright (C) 2016  Finn Ryan
 
 //	This program is free software: you can redistribute it and/or modify
@@ -22,6 +23,11 @@
 /********************************************************/
 
 #include <vector>
+//#include <glm/mat3x3.hpp>
+//#include <glm/vec3.hpp>
+//#include <glm/gtc/matrix_tranform.hpp>
+
+#include "obj_model.hpp"
 
 /// @todo change to proper mathematics library for vectors. GNU Scientific library?
 #include "vector_math.hpp"
@@ -35,9 +41,15 @@
 class entity{
 
 	public:
+	entity();
+	
 	int rotate(double x, double y, double z);
 	
 	int setRotate(double x, double y, double z);
+	
+	int getForwardVec(vector3d *);
+	
+	int getworldPos(vector3d *);
 	
 	int updateModel(); // temporary.
 	
@@ -46,15 +58,17 @@ class entity{
 	private:
 	int updateAxes();
 	
-	double m_xRotate;
-	double m_yRotate;
-	double m_zRotate;
+	//vector3d m_rotation;
+	
+	vector3d m_worldPos;
+	
+	vector3d m_rotation;
 	
 	vector3d m_localX;
 	vector3d m_localY;
 	vector3d m_localZ;
 
-	objModel m_model; // temporary
+	objModel *m_model; // temporary
 };
 
 /*********************************************************/

@@ -21,6 +21,8 @@
 #include <netinet/udp.h>
 #include <arpa/inet.h>
 
+#include <sys/time.h>
+
 /*********************************************************/
 
 #define NET_MXCONN 16 // maximum connections at once
@@ -67,6 +69,21 @@ struct conn_t{
 class netinst{
 
 	public:
+		/**
+		*
+		* @param tick The number of steps per second when using
+		* checkStep().
+		*/
+	netinst(double tickrate);
+	
+		/**
+		* @brief Used to perform an action a consistent number
+		* of times per second.
+		*
+		* @return 0 minimum time for step has past, new step may
+		* be run; 1 not time for new step; -1 error;
+		*/
+	int checkStep();
 		/**
 		* @brief Creates local socket & binds to address.
 		* Should be used to create listening socket on
@@ -196,6 +213,9 @@ class netinst{
 	private:
 	std::vector<conn_t> m_sockused;
 	std::vector<int> m_sockfree;
+
+	timeval m_tstart; // start time of current step;
+	long int m_tick; // Duration of each step
 	
 		/**
 		* @brief Check if a socket is connected

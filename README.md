@@ -11,18 +11,14 @@ Uses old fixed GL pipeline for rendering, camera working nicely, class that can 
  * See LICENSE.txt for the full text.
 
 ## TODO
-1. Create class/s to manage vertex array objects and buffers
-2. Create class to add & remove vertices from .objs to be drawn by shaders.
-3. Lua integration -- logical game objects will be in lua.
-4. Logging class which can take appropriate action (such as close program). So every call does not need to be error checked. 
-5. netcode -- client/server structure: WIP
- * Using UDP to avoid latency
- * Reimplementing retransmission & aknowledgment, inspired by [Quake3](http://fabiensanglard.net/quake3/network.php)
- * Server transmits current state of game (stored as struct) to clients per step.
- * Clients transmit events (stored as struct) to server per step.
- * Windows will require reimplementation in winsock2, should be fairly easy.
-6. Release Matthew from HJ slavery.
-
+1. STARTED: entity class (entity.cpp,.hpp): representing a physical object.
+ * Rotation of object should be stored as change to it's local axes. Each axis stored as a vec3. Using glm.
+3. Logging class with severity levels.
+ * Message pacing (eg error message happening at every step only is written to stderr each second). 
+4. Add methods in netinst class to regulate game speed, ie only 30 steps a second.
+ * Method that is called before each run of main loop, returning how long to wait? IDK!!
+5. Release Matthew from HJ slavery.
+6. Eat 4 snow cones at once.
 * See TODO.md for list of specific things to do in sourcecode.
 
 ## Dependencies

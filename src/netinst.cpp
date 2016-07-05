@@ -9,6 +9,23 @@
 
 /********************************************************/
 
+netinst::netinst(double tickrate){
+	m_tick = (1 / (double) tickrate) * 1000000; // Number of milliseconds for tickrate / 1 second.
+	gettimeofday(&m_tstart,NULL); // Get initial time.
+}
+
+int netinst::checkStep(){
+	timeval tcurrent, diff;
+	gettimeofday(&tcurrent,NULL);
+	timersub(&tcurrent,&m_tstart,&diff);
+	if(diff.tv_sec >= 1 || diff.tv_usec >= m_tick){
+		gettimeofday(&m_tstart,NULL); // Get start time of new step.
+		return 0;
+	}
+	
+	return 1;
+}
+
 int netinst::createSocket(unsigned short int *lport){
 	int sockfd = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
 	if(sockfd < 0){

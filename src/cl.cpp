@@ -14,6 +14,8 @@
 #include "glshader.hpp"
 #include "netinst.hpp"
 #include "game_data.hpp"
+#include "cinput.hpp"
+#include "entity.hpp"
 
 void error_callback(int error, const char *description);
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
@@ -22,10 +24,17 @@ void lookAround(GLFWwindow *window);
 
 camera playerCam;
 glShader shaders("shaders/");
-netinst net;
+netinst net(30);
+char netbuf[NET_SBUFSZ];
+
+fromplayer_t output;
+cinput input(&output);
 
 int connsock;
 fromplayer_t sbuf;
+
+std::vector<entity> entities;
+std::vector<entity> *players;
 
 int main(int argc, char *argv[]){
 	// networking setup
@@ -36,9 +45,9 @@ int main(int argc, char *argv[]){
 	
 	if((connsock = net.joinServer(9845,"127.0.0.1")) >= 0){
 		if(net.appendBuffer(connsock,(void *) name.c_str(),name.size()) != 0)
-			std::cout << "Response error" << std::endl;
+			return -1;
 		if(net.sendBuffer(connsock) != 0)
-			std::cout << "Response error" << std::endl;
+			return -1;
 		std::cout << "Sent response" << std::endl;
 	}
 
@@ -68,7 +77,8 @@ int main(int argc, char *argv[]){
 	
 	double xMouse, yMouse;
 	glfwGetCursorPos (window, &xMouse, &yMouse);
-	playerCam.setMousePos(xMouse,yMouse);
+	//playerCam.setMousePos(xMouse,yMouse);
+	input.setMousePos(xMouse,yMouse);
 	
 	//glShader test
 	glewInit();
@@ -77,15 +87,39 @@ int main(int argc, char *argv[]){
 	float ratio;
 	int width, height;
 	while(!glfwWindowShouldClose(window)){
-	
 		//window management
 		glfwGetFramebufferSize(window,&width,&height);
 		ratio = width / (float) height;
 		
 		glViewport(0,0,width,height);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		if(net.checkStep() == 0){
 		
-		// networking
+		}
+		/******* NETWORKING *******/
+			// Get game state
+		if(net.tryRead(connsock,(void *)&netbuf,sizeof(netbuf),NULL,0) > 0){
+			std::cout << "state received" << std::endl;
+			unsigned int index = 0;
+			fromserver_t *from = (fromserver_t *) &netbuf;
+			index += sizeof(fromserver_t);
+			for(int i=0; i<from->entstateN; i++){
+				index += sizeof(entstate_t);
+			}
+			actiondef_t *action;
+			for(int i=0; i<from->actiondefN; i++){
+				action = (actiondef_t *) &netbuf[index];
+				input.addAction(action->id,"test action",action->GLFW_defkey);
+				std::cout << "action added" << std::endl;
+				index += sizeof(actiondef_t);
+			}
+		}
+		else{
+			//std::cerr << "No state received from server" << std::endl;
+		}
+		/**************************/
+
 		
 		
 
@@ -95,7 +129,10 @@ int main(int argc, char *argv[]){
 	        
 		double xMouse, yMouse;
 		glfwGetCursorPos (window, &xMouse, &yMouse);	
-		playerCam.lookStep(xMouse,yMouse);
+		memset((void *) &output,0,sizeof(fromplayer_t));
+		input.updateMouseRotation(xMouse,yMouse);
+		//playerCam.lookStep(xMouse,yMouse);
+		playerCam.setRotation(output.camRotate.x,output.camRotate.y,0);
 		struct vector3d lookDir = playerCam.getLookDir();
 		gluLookAt(
 			lookDir.x,lookDir.y,lookDir.z,

@@ -51,16 +51,18 @@ class camera{
 		///where the camera is looking, this is not world coordinates, 
 		///but opengl where camera is always position 0,0,0
 		///In unit vector format
+
+		///The camera's current rotation on the global Y axis
+	double m_yRotate;
+		///The camera's current rotation on the global X axis;
+	double m_xRotate;
+
 	struct vector3d m_lookDir;
 	struct vector3d m_leftDir;
 	struct vector3d m_rightDir;
 		///the previous* position of mouse cursor
 	double m_xMouse;
 	double m_yMouse;
-		///The camera's current rotation on the global Y axis
-	double m_yRotate;
-		///The camera's current rotation on the global X axis;
-	double m_xRotate;
 		///Camera movement speed
 	double m_speed;
 	
